@@ -204,17 +204,6 @@
             border-color: var(--magenta-accent);
         }
 
-        .link-card.disabled {
-            opacity: 0.75;
-            cursor: not-allowed;
-        }
-
-        .link-card.disabled:hover {
-            transform: none;
-            box-shadow: none;
-            border-color: var(--border-subtle);
-        }
-
         .link-card-header {
             display: flex;
             justify-content: space-between;
@@ -235,12 +224,6 @@
             background: var(--magenta-accent);
             color: #FFFFFF;
             border: none;
-        }
-
-        .link-badge.pending {
-            background: #F3F4F6;
-            color: #6B7280;
-            border: 1px dashed var(--border-subtle);
         }
 
         .link-title {
@@ -694,25 +677,82 @@
         </a>
     </div>
 
-    <!-- SECCIÓN 05: MANUAL DE MARCA & RECURSOS -->
+    <!-- SECCIÓN 05: MANUAL DE MARCA & RECURSOS VISUALES -->
     <div class="section-header">
         <span class="tag-bracket">[ SECCIÓN 05 ]</span>
         <h2 class="section-title">Manual de Marca <span class="serif-italic">&amp; Recursos Visuales</span></h2>
     </div>
 
     <div class="links-group">
-        <div class="link-card disabled">
+        <!-- Manual de Uso -->
+        <a href="https://drive.google.com/file/d/1ksztSXtn4iy0Lg3Rqu963-39VTK234nH/view?usp=drive_link" target="_blank" rel="noopener" class="link-card">
             <div class="link-card-header">
-                <span class="link-badge pending">En Desarrollo por Agencia</span>
-                <span class="tag-bracket">Branding &amp; Assets</span>
+                <span class="link-badge highlight">Documento Oficial</span>
+                <span class="tag-bracket">PDF</span>
             </div>
-            <div class="link-title">Manual de Identidad &amp; Guía de Marca</div>
-            <p class="link-desc">Espacio reservado para los recursos gráficos oficializados por la agencia de diseño (paletas, tipografías, logotipos en vector y aplicaciones de marca).</p>
-            <div class="link-card-action" style="color: var(--text-muted);">
-                <span>Documentación en proceso de integración</span>
+            <div class="link-title">Manual de Identidad &amp; Uso de Marca</div>
+            <p class="link-desc">Guía completa de aplicación institucional, reglas de composición, alineación y normas del sistema visual.</p>
+            <div class="link-card-action">
+                <span>Abrir Manual en Google Drive</span>
                 <span class="arrow">&rarr;</span>
             </div>
-        </div>
+        </a>
+
+        <!-- Carpeta de Logos -->
+        <a href="https://drive.google.com/drive/folders/1bXHwILA42ptI4RJToJaXALOTrhDg3436?usp=drive_link" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-header">
+                <span class="link-badge">Carpeta Drive</span>
+                <span class="tag-bracket">Logotipo</span>
+            </div>
+            <div class="link-title">Archivos de Logotipo Oficial</div>
+            <p class="link-desc">Variaciones institucionales del logotipo en alta resolución, formatos vectoriales y adaptaciones de contraste.</p>
+            <div class="link-card-action">
+                <span>Explorar carpeta de Logos</span>
+                <span class="arrow">&rarr;</span>
+            </div>
+        </a>
+
+        <!-- Carpeta Símbolo -->
+        <a href="https://drive.google.com/drive/folders/1gbbeQhjlV1zH7uYSeB9YERX81DAzmHTi?usp=drive_link" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-header">
+                <span class="link-badge">Carpeta Drive</span>
+                <span class="tag-bracket">Isotipo</span>
+            </div>
+            <div class="link-title">Símbolo / Isotipo de Marca</div>
+            <p class="link-desc">Flor geométrica concéntrica y elementos gráficos aislados en formatos transparentes y vectoriales.</p>
+            <div class="link-card-action">
+                <span>Explorar carpeta de Símbolos</span>
+                <span class="arrow">&rarr;</span>
+            </div>
+        </a>
+
+        <!-- Paleta de Colores JPG -->
+        <a href="https://drive.google.com/file/d/1tlyyYNTLPnZ6vG0pYrG9SaXm5OezY2iz/view?usp=drive_link" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-header">
+                <span class="link-badge">Muestra Visual</span>
+                <span class="tag-bracket">JPG</span>
+            </div>
+            <div class="link-title">Paleta de Colores Oficial (Muestra JPG)</div>
+            <p class="link-desc">Vista rápida de la guía cromática institucional con valores y equivalencias de color.</p>
+            <div class="link-card-action">
+                <span>Ver Muestra de Colores JPG</span>
+                <span class="arrow">&rarr;</span>
+            </div>
+        </a>
+
+        <!-- Paleta de Colores PDF -->
+        <a href="https://drive.google.com/file/d/1IV43ihzJld3t07yoO4V5WSm1tZezgG9F/view?usp=drive_link" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-header">
+                <span class="link-badge">Ficha Técnica</span>
+                <span class="tag-bracket">PDF</span>
+            </div>
+            <div class="link-title">Especificaciones de Colores (PDF)</div>
+            <p class="link-desc">Desglose técnico de la paleta oficial (HEX, RGB, CMYK, Pantone) para producción digital e impresa.</p>
+            <div class="link-card-action">
+                <span>Ver Especificaciones de Colores PDF</span>
+                <span class="arrow">&rarr;</span>
+            </div>
+        </a>
     </div>
 
     <!-- SECCIÓN 06: STOCK FOTOGRÁFICO MARCA PERSONAL -->
@@ -732,7 +772,7 @@
     <!-- FOOTER -->
     <footer>
         <h2>Fernanda Rangel</h2>
-        <p>Centro de Control de Proyectos, Contenido, Redes Sociales y Stock Fotográfico.</p>
+        <p>Centro de Control de Proyectos, Contenido, Redes Sociales, Marca Personal y Stock Fotográfico.</p>
     </footer>
 
 </div>
