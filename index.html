@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub de Recursos & Galería Stock | Fernanda Rangel</title>
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Paleta Oficial Fernanda Rangel */
+            --navy-primary: #111462;     /* Azul Marino Profundo */
+            --magenta-accent: #D938AD;   /* Magenta / Rosa Neón */
+            --bg-light: #E4ECEF;         /* Gris Hielo Base */
+            --bg-card: #FFFFFF;          /* Blanco Puro */
+            --text-dark: #111462;
+            --text-muted: #4B5563;       /* Gris Oscuro */
+            --text-subtle: #CBD8DE;      /* Gris Suave */
+            --border-subtle: #CBD8DE;
+            
+            /* Tipografías */
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.45;
+            padding: 16px 12px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* ELEMENTOS DE DISEÑO EDITORIAL */
+        .tag-bracket {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .arrow-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid var(--navy-primary);
+            color: var(--navy-primary);
+            font-size: 14px;
+        }
+
+        /* HEADER PRINCIPAL PERFIL */
+        header {
+            background-color: var(--bg-card);
+            padding: 28px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(17, 20, 98, 0.05);
+            position: relative;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .profile-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .profile-avatar-container {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--magenta-accent);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background-color: #E0E0E0;
+        }
+
+        .profile-avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .title-text-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+            color: var(--navy-primary);
+        }
+
+        h1 .serif-italic {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0;
+        }
+
+        .hero-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.45;
+        }
+
+        .pills-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .pill-badge {
+            background: var(--bg-light);
+            border: 1px solid var(--border-subtle);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 10.5px;
+            font-weight: 600;
+            color: var(--navy-primary);
+        }
+
+        .pill-badge.magenta {
+            background: var(--magenta-accent);
+            color: #FFFFFF;
+            border: none;
+        }
+
+        /* SECCIONES Y TITULARES */
+        .section-header {
+            margin-top: 28px;
+            margin-bottom: 12px;
+            padding: 0 4px;
+        }
+
+        .section-header .tag-bracket {
+            color: var(--magenta-accent);
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            color: var(--navy-primary);
+            margin-top: 4px;
+        }
+
+        /* TARJETAS DE ENLACES */
+        .links-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .link-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 16px;
+            text-decoration: none;
+            color: var(--navy-primary);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(17, 20, 98, 0.08);
+            border-color: var(--magenta-accent);
+        }
+
+        .link-card.disabled {
+            opacity: 0.75;
+            cursor: not-allowed;
+        }
+
+        .link-card.disabled:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: var(--border-subtle);
+        }
+
+        .link-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .link-badge {
+            font-size: 10px;
+            font-weight: 700;
+            background: var(--bg-light);
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: var(--navy-primary);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .link-badge.highlight {
+            background: var(--magenta-accent);
+            color: #FFFFFF;
+            border: none;
+        }
+
+        .link-badge.pending {
+            background: #F3F4F6;
+            color: #6B7280;
+            border: 1px dashed var(--border-subtle);
+        }
+
+        .link-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--navy-primary);
+        }
+
+        .link-desc {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .link-card-action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 4px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--border-subtle);
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--magenta-accent);
+        }
+
+        .link-card-action .arrow {
+            font-size: 14px;
+            transition: transform 0.2s ease;
+        }
+
+        .link-card:hover .link-card-action .arrow {
+            transform: translateX(4px);
+        }
+
+        /* GRID SOCIAL MEDIA */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .social-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 12px 14px;
+            text-decoration: none;
+            color: var(--navy-primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+
+        .social-card:hover {
+            border-color: var(--magenta-accent);
+            background: #FFFFFF;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(17, 20, 98, 0.06);
+        }
+
+        .social-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--navy-primary);
+            flex-shrink: 0;
+        }
+
+        .social-name {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .social-handle {
+            font-size: 11px;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        /* GALERÍA DE STOCK FOTOGRÁFICO */
+        .stock-box {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .stock-count-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--magenta-accent);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .stock-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .stock-item {
+            aspect-ratio: 1 / 1;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-subtle);
+            cursor: pointer;
+        }
+
+        .stock-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .stock-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .stock-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(17, 20, 98, 0.4);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s ease;
+            color: #FFFFFF;
+            font-size: 18px;
+        }
+
+        .stock-item:hover .stock-overlay {
+            opacity: 1;
+        }
+
+        /* MODAL INSPECTOR DE IMÁGENES */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(17, 20, 98, 0.85);
+            backdrop-filter: blur(6px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .modal-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            max-width: 520px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            background: var(--navy-primary);
+            color: #FFFFFF;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 22px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            background: #000;
+        }
+
+        .modal-body img {
+            max-width: 100%;
+            max-height: 65vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .modal-footer {
+            padding: 12px 16px;
+            background: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .btn-download {
+            background: var(--magenta-accent);
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--navy-primary);
+            color: #FFFFFF;
+            border-radius: 20px;
+            padding: 28px 20px;
+            text-align: center;
+            margin-top: 36px;
+        }
+
+        footer h2 {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        footer p {
+            font-size: 12px;
+            color: var(--text-subtle);
+        }
+
+        @media (min-width: 640px) {
+            body { padding: 32px 16px; }
+            .social-grid { grid-template-columns: repeat(2, 1fr); }
+            .stock-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER PRINCIPAL PERFIL -->
+    <header>
+        <div class="header-top">
+            <span class="arrow-icon">&rarr;</span>
+            <span class="tag-bracket">[ DIRECTORIO DE RECURSOS ]</span>
+        </div>
+        
+        <div class="profile-title-wrapper">
+            <div class="profile-avatar-container">
+                <img src="https://i.ibb.co/XZ6gVW2W/IMG-8763.jpg" alt="Fernanda Rangel">
+            </div>
+            <div class="title-text-group">
+                <h1>Fernanda Rangel</h1>
+                <h1 style="font-size: 20px; color: var(--text-muted);"><span class="serif-italic">— Conciencia Financiera</span></h1>
+            </div>
+        </div>
+
+        <p class="hero-desc">🚀 Conciencia financiera • 🤍 Mamá • esposa • construyendo mi mejor versión • 🛡️ Seguros • educación • retiro | MDRT</p>
+        
+        <div class="pills-group">
+            <span class="pill-badge magenta">@soyfernandarangel</span>
+            <span class="pill-badge">Marca Personal</span>
+        </div>
+    </header>
+
+    <!-- SECCIÓN 01: REDES SOCIALES & CONTACTO -->
+    <div class="section-header">
+        <span class="tag-bracket">[ SECCIÓN 01 ]</span>
+        <h2 class="section-title">Canales & Contacto</h2>
+    </div>
+
+    <div class="social-grid">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/soyfernandarangel/" target="_blank" rel="noopener" class="social-card">
+            <div class="social-info">
+                <div class="social-icon">📸</div>
+                <div>
+                    <span class="social-name">Instagram</span>
+                    <span class="social-handle">@soyfernandarangel</span>
+                </div>
+            </div>
+            <span class="tag-bracket" style="color: var(--magenta-accent);">&rarr;</span>
+        </a>
+
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@soyfernandarangel" target="_blank" rel="noopener" class="social-card">
+            <div class="social-info">
+                <div class="social-icon">🎵</div>
+                <div>
+                    <span class="social-name">TikTok</span>
+                    <span class="social-handle">@soyfernandarangel</span>
+                </div>
+            </div>
+            <span class="tag-bracket">&rarr;</span>
+        </a>
+
+        <!-- WhatsApp Directo -->
+        <a href="https://wa.me/524624196176" target="_blank" rel="noopener" class="social-card" style="grid-column: span 2;">
+            <div class="social-info">
+                <div class="social-icon" style="background: #25D366; color: #FFF;">💬</div>
+                <div>
+                    <span class="social-name">Contacto Directo WhatsApp</span>
+                    <span class="social-handle">+52 462 419 6176 · Asesorías & Consultas</span>
+                </div>
+            </div>
+            <span class="tag-bracket" style="color: var(--magenta-accent);">MANDAR MSG &rarr;</span>
+        </a>
+    </div>
+
+    <!-- SECCIÓN 02: PLATAFORMAS & WEBSITE -->
+    <div class="section-header">
+        <span class="tag-bracket">[ SECCIÓN 02 ]</span>
+        <h2 class="section-title">Plataformas & Websites</h2>
+    </div>
+
+    <div class="links-group">
+        <!-- Website V2 -->
+        <a href="https://jonpisilmx.github.io/ferrangel02/" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-header">
+                <span class="link-badge highlight">Versión Final / Mobile First</span>
+                <span class="tag-bracket">V2.0</span>
+            </div>
+            <div class="link-title">Website Oficial — Segunda Versión</div>
+            <p class="link-desc">Diseño optimizado para dispositivos móviles. Presentado en primera junta de revisión (pendiente de ronda de cambios).</p>
+            <div class="link-card-action">
+                <span>Abrir plataforma</span>
+                <span class="arrow">&rarr;</span>
+            </div>
+        </a>
+
+        <!-- Website V1 -->
+        <a href="https://jonpisilmx.github.io/ferrangel/" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-header">
+                <span class="link-badge">Prototipo Inicial</span>
+                <span class="tag-bracket">V1.0</span>
+            </div>
+            <div class="link-title">Website Oficial — Primera Versión</div>
+            <p class="link-desc">Primera propuesta de estructura e identidad visual utilizando elementos gráficos e imágenes generadas por IA.</p>
+            <div class="link-card-action">
+                <span>Ver prototipo inicial</span>
+                <span class="arrow">&rarr;</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- SECCIÓN 03: ESTRATEGIA EDITORIAL -->
+    <div class="section-header">
+        <span class="tag-bracket">[ SECCIÓN 03 ]</span>
+        <h2 class="section-title">Estrategia Editorial</h2>
+    </div>
+
+    <div class="links-group">
+        <a href="https://jonpisilmx.github.io/ferestrategiaoctubre" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-header">
+                <span class="link-badge highlight">Octubre 2026</span>
+                <span class="tag-bracket">Plan de Contenido</span>
+            </div>
+            <div class="link-title">Estrategia de Contenidos & Calendario</div>
+            <p class="link-desc">Calendario completo con guiones interactivos, llamadas a la acción (CTA) y temas programados para el mes.</p>
+            <div class="link-card-action">
+                <span>Revisar calendario y guiones</span>
+                <span class="arrow">&rarr;</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- SECCIÓN 04: REPORTES DE INVERSIÓN -->
+    <div class="section-header">
+        <span class="tag-bracket">[ SECCIÓN 04 ]</span>
+        <h2 class="section-title">Reportes de Inversiones <span class="serif-italic">— Sep 2026</span></h2>
+    </div>
+
+    <div class="links-group">
+        <!-- Reporte 1 -->
+        <a href="https://jonpisilmx.github.io/ferreporte" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-header">
+                <span class="link-badge">Reporte 1</span>
+                <span class="tag-bracket">Cierre Septiembre</span>
+            </div>
+            <div class="link-title">Reporte de Inversión 1</div>
+            <p class="link-desc">Análisis detallado de rendimiento y desglose financiero correspondiente al cierre de septiembre 2026.</p>
+            <div class="link-card-action">
+                <span>Consultar reporte</span>
+                <span class="arrow">&rarr;</span>
+            </div>
+        </a>
+
+        <!-- Reporte 2 -->
+        <a href="https://jonpisilmx.github.io/ferreporte02" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-header">
+                <span class="link-badge">Reporte 2</span>
+                <span class="tag-bracket">Cierre Septiembre</span>
+            </div>
+            <div class="link-title">Reporte de Inversión 2</div>
+            <p class="link-desc">Vista alternativa de métricas de desempeño e indicadores clave para clientes de cartera estratégica.</p>
+            <div class="link-card-action">
+                <span>Consultar reporte</span>
+                <span class="arrow">&rarr;</span>
+            </div>
+        </a>
+
+        <!-- Reporte 3 -->
+        <a href="https://jonpisilmx.github.io/ferreporte03" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-header">
+                <span class="link-badge">Reporte 3</span>
+                <span class="tag-bracket">Cierre Septiembre</span>
+            </div>
+            <div class="link-title">Reporte de Inversión 3</div>
+            <p class="link-desc">Desglose complementario de proyecciones e instrumentos de ahorro/inversión activos.</p>
+            <div class="link-card-action">
+                <span>Consultar reporte</span>
+                <span class="arrow">&rarr;</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- SECCIÓN 05: MANUAL DE MARCA & RECURSOS -->
+    <div class="section-header">
+        <span class="tag-bracket">[ SECCIÓN 05 ]</span>
+        <h2 class="section-title">Manual de Marca <span class="serif-italic">&amp; Recursos Visuales</span></h2>
+    </div>
+
+    <div class="links-group">
+        <div class="link-card disabled">
+            <div class="link-card-header">
+                <span class="link-badge pending">En Desarrollo por Agencia</span>
+                <span class="tag-bracket">Branding &amp; Assets</span>
+            </div>
+            <div class="link-title">Manual de Identidad &amp; Guía de Marca</div>
+            <p class="link-desc">Espacio reservado para los recursos gráficos oficializados por la agencia de diseño (paletas, tipografías, logotipos en vector y aplicaciones de marca).</p>
+            <div class="link-card-action" style="color: var(--text-muted);">
+                <span>Documentación en proceso de integración</span>
+                <span class="arrow">&rarr;</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 06: STOCK FOTOGRÁFICO MARCA PERSONAL -->
+    <div class="section-header">
+        <span class="tag-bracket">[ SECCIÓN 06 ]</span>
+        <h2 class="section-title">Stock Fotográfico <span class="serif-italic">— Marca Personal</span></h2>
+    </div>
+
+    <div class="stock-box">
+        <span class="stock-count-badge">[ GALERÍA OFICIAL: 67 FOTOGRAFÍAS DISPONIBLES ]</span>
+        
+        <div class="stock-grid" id="stockGrid">
+            <!-- Las imágenes se inyectan dinámicamente -->
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <h2>Fernanda Rangel</h2>
+        <p>Centro de Control de Proyectos, Contenido, Redes Sociales y Stock Fotográfico.</p>
+    </footer>
+
+</div>
+
+<!-- MODAL DE INSPECCIÓN DE FOTO STOCK -->
+<div class="modal-overlay" id="imageModal">
+    <div class="modal-card">
+        <div class="modal-header">
+            <h3 id="modalImageTitle">Vista de Fotografía Stock</h3>
+            <button class="modal-close" onclick="closeImageModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img id="modalImageSrc" src="" alt="Stock Fernanda Rangel">
+        </div>
+        <div class="modal-footer">
+            <span class="tag-bracket" id="modalImgIndex">FOTO 01 DE 67</span>
+            <a href="#" id="downloadBtn" target="_blank" download class="btn-download">
+                <span>Descargar HD</span>
+                <span>&darr;</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const stockImages = [
+        "https://i.ibb.co/v4y6s8VK/IMG-8742.jpg",
+        "https://i.ibb.co/W4bHLqRc/MG-8862.jpg",
+        "https://i.ibb.co/3mjhfGZv/IMG-8778.jpg",
+        "https://i.ibb.co/Gf6VYGcB/MG-8989.jpg",
+        "https://i.ibb.co/d0c1PfWy/IMG-8627.jpg",
+        "https://i.ibb.co/twtyk0hV/IMG-8631.jpg",
+        "https://i.ibb.co/fzZR0sK3/IMG-8763.jpg",
+        "https://i.ibb.co/Cpq53f9v/MG-8834.jpg",
+        "https://i.ibb.co/C3St85ZB/IMG-8485.jpg",
+        "https://i.ibb.co/QjhXNXbR/IMG-8578.jpg",
+        "https://i.ibb.co/BKcwgkry/IMG-8647.jpg",
+        "https://i.ibb.co/Ps4sgTSV/IMG-8539.jpg",
+        "https://i.ibb.co/yBm74GkK/IMG-8932.jpg",
+        "https://i.ibb.co/YTbYKJpX/IMG-8733.jpg",
+        "https://i.ibb.co/4wMpWwMb/IMG-8949.jpg",
+        "https://i.ibb.co/TMTMWRyt/IMG-8549.jpg",
+        "https://i.ibb.co/PsgZzk2w/IMG-8494.jpg",
+        "https://i.ibb.co/cc3BgJ0S/IMG-8569.jpg",
+        "https://i.ibb.co/VYqtrgZF/IMG-8705.jpg",
+        "https://i.ibb.co/wZtSXczt/IMG-8553.jpg",
+        "https://i.ibb.co/twKwDFqt/MG-8999.jpg",
+        "https://i.ibb.co/k6hFRkCw/MG-8976.jpg",
+        "https://i.ibb.co/xKprRTXf/MG-9019.jpg",
+        "https://i.ibb.co/0R8vVbJw/IMG-8816.jpg",
+        "https://i.ibb.co/ycWD5sKj/IMG-8953.jpg",
+        "https://i.ibb.co/WW4PcRYP/IMG-8729.jpg",
+        "https://i.ibb.co/TM4Yds0w/IMG-8682.jpg",
+        "https://i.ibb.co/zWtsw0BS/IMG-8790.jpg",
+        "https://i.ibb.co/wrN1vpZQ/IMG-8505.jpg",
+        "https://i.ibb.co/cXyszsz6/IMG-8944.jpg",
+        "https://i.ibb.co/kg15R8bw/IMG-8745.jpg",
+        "https://i.ibb.co/20Mvntzt/IMG-8929.jpg",
+        "https://i.ibb.co/cKypYfbV/IMG-8661.jpg",
+        "https://i.ibb.co/7t5dmwYF/IMG-8698.jpg",
+        "https://i.ibb.co/hFqZj426/IMG-8564.jpg",
+        "https://i.ibb.co/9HLrBC19/IMG-8708.jpg",
+        "https://i.ibb.co/4wbZ6cVz/MG-8978.jpg",
+        "https://i.ibb.co/gZ2nbKfk/IMG-8731.jpg",
+        "https://i.ibb.co/gXnpCnN/IMG-8822.jpg",
+        "https://i.ibb.co/b5yMbm1g/IMG-8571.jpg",
+        "https://i.ibb.co/6cBCHwq6/IMG-8567.jpg",
+        "https://i.ibb.co/zHDmhZqR/IMG-8814.jpg",
+        "https://i.ibb.co/KxBKJtGh/IMG-8639.jpg",
+        "https://i.ibb.co/wZCt26ws/IMG-8510.jpg",
+        "https://i.ibb.co/4gWvgd8q/IMG-8947.jpg",
+        "https://i.ibb.co/PGc6ZTv7/IMG-8750.jpg",
+        "https://i.ibb.co/sv1882qc/IMG-8615.jpg",
+        "https://i.ibb.co/4vLFJXN/IMG-8585.jpg",
+        "https://i.ibb.co/VYGNh61n/IMG-8602.jpg",
+        "https://i.ibb.co/C3XmQMPk/MG-8830.jpg",
+        "https://i.ibb.co/N6QqWnjh/IMG-8680.jpg",
+        "https://i.ibb.co/KpwkByL8/IMG-8618.jpg",
+        "https://i.ibb.co/b5wv033x/IMG-8730.jpg",
+        "https://i.ibb.co/nqdGcrCp/IMG-8788.jpg",
+        "https://i.ibb.co/fGBTskGG/IMG-8771.jpg",
+        "https://i.ibb.co/PvjWsqQh/IMG-8819.jpg",
+        "https://i.ibb.co/0WKxFN2/IMG-8783.jpg",
+        "https://i.ibb.co/GzLfjfv/IMG-8613.jpg",
+        "https://i.ibb.co/JjLQ2Lzj/IMG-8633.jpg",
+        "https://i.ibb.co/CKR3ysNd/MG-9007.jpg",
+        "https://i.ibb.co/wFN1hq5k/IMG-8625.jpg",
+        "https://i.ibb.co/5XzGH8nQ/IMG-8672.jpg",
+        "https://i.ibb.co/0RTDVX8c/IMG-8798.jpg",
+        "https://i.ibb.co/hxVsRvg4/MG-8969.jpg",
+        "https://i.ibb.co/v4X892Xz/IMG-8645.jpg",
+        "https://i.ibb.co/vvsjrzfs/IMG-8628.jpg",
+        "https://i.ibb.co/ds2fXb6Q/MG-8965.jpg"
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const grid = document.getElementById('stockGrid');
+        stockImages.forEach((url, index) => {
+            const item = document.createElement('div');
+            item.className = 'stock-item';
+            item.onclick = () => openImageModal(url, index);
+
+            item.innerHTML = `
+                <img src="${url}" alt="Stock Foto ${index + 1}" loading="lazy">
+                <div class="stock-overlay">&#128065;</div>
+            `;
+            grid.appendChild(item);
+        });
+    });
+
+    function openImageModal(url, index) {
+        const modal = document.getElementById('imageModal');
+        const img = document.getElementById('modalImageSrc');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const indexText = document.getElementById('modalImgIndex');
+
+        img.src = url;
+        downloadBtn.href = url;
+        indexText.innerText = `FOTO ${String(index + 1).padStart(2, '0')} DE ${stockImages.length}`;
+        modal.style.display = 'flex';
+    }
+
+    function closeImageModal() {
+        document.getElementById('imageModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('imageModal');
+        if (event.target === modal) {
+            closeImageModal();
+        }
+    };
+</script>
+
+</body>
+</html>
